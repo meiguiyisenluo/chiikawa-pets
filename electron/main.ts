@@ -10,8 +10,8 @@ ipcMain.handle("get-screen-size", () => {
 
 const require = createRequire(import.meta.url);
 
-const win32KeyboardHook = require("win32-keyboard-hook");
-import type { Callback } from "win32-keyboard-hook";
+const win32KeyboardHook = require("@lysyyds/win32-mouse-keyboard-hook");
+import type { Callback } from "@lysyyds/win32-mouse-keyboard-hook";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

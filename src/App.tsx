@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Keyboard from "./components/Keyboard";
-import type { CallbackArgs } from "win32-keyboard-hook";
+import type { CallbackArgs } from "@lysyyds/win32-mouse-keyboard-hook";
 
 function App() {
   const [activeKeyMap, setActiveKeyMap] = useState({});
