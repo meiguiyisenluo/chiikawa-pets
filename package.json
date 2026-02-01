@@ -14,7 +14,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@lysyyds/win32-mouse-keyboard-hook": "^1.0.10",
+    "@lysyyds/win32-mouse-keyboard-hook": "^1.0.12",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
