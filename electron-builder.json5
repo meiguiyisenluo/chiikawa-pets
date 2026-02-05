@@ -4,6 +4,7 @@
   "appId": "YourAppID",
   "asar": true,
   "productName": "Chiikawa Pets",
+  "publish": null,
   "directories": {
     "output": "release/${version}"
   },
