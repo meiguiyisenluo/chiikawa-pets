@@ -1,4 +1,4 @@
-const keyImages = {
+const keyImages: Record<number, string> = {
   8: "Backspace.png",
   9: "Tab.png",
   13: "Return.png",
@@ -50,6 +50,6 @@ const keyImages = {
   103: "Num7.png",
   104: "Num8.png",
   105: "Num9.png",
-} as const;
+};
 
 export default keyImages;
