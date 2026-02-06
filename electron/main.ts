@@ -52,8 +52,8 @@ function createHook() {
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 200,
-    height: 200,
+    width: 306,
+    height: 277,
     skipTaskbar: true,
     frame: false, // 无边框
     transparent: true, // 透明背景
@@ -68,7 +68,7 @@ function createWindow() {
   });
 
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-  win.setPosition(width - 200, height - 200); // 200 是窗口宽高
+  win.setPosition(width - 306, height - 277);
 
   // Test active push message to Renderer-process.
   win.webContents.on("did-finish-load", () => {

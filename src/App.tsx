@@ -38,12 +38,17 @@ function App() {
             ...n,
             [x]: [undefined, true, false][eventType],
           }));
+
+          live2d.current.setParameterValueById(
+            "CatParamLeftHandDown",
+            [undefined, true, false][eventType],
+          );
         } else if (type === "mouse") {
           // console.log("Mouse:", eventType, x, y);
 
           setMousePos({ x, y });
 
-          const xRatio = x / screenSize.width * .5;
+          const xRatio = (x / screenSize.width) * 0.5;
           const yRatio = y / screenSize.height;
 
           for (const id of [
@@ -96,7 +101,12 @@ function App() {
     }
   }, []);
 
-  return <canvas ref={canvasRef} id="canvas" width="200" height="200"></canvas>;
+  return (
+    <>
+      <img src="/models/standard/resources/background.png" alt="" />
+      <canvas ref={canvasRef} id="canvas"></canvas>
+    </>
+  );
 
   return (
     <>
