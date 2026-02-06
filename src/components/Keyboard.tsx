@@ -1,10 +1,14 @@
-import { OmitKeyCode } from "./KeyCodeMap";
+import keyImages from "./keycode";
 
 function Keyboard({ activeKeyMap }: { activeKeyMap: Record<number, boolean> }) {
   return (
     <>
-      {OmitKeyCode.map((_) => (
-        <span className={activeKeyMap[_.key] ? "active" : ""}>{_.value}</span>
+      {Object.entries(keyImages).map(([key, value]) => (
+        <img
+          style={{ display: activeKeyMap[key] ? "block" : "none" }}
+          src={"/models/standard/resources/left-keys/" + value}
+          alt=""
+        />
       ))}
     </>
   );

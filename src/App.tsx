@@ -11,10 +11,6 @@ function App() {
   const live2d = useRef<any>(null);
 
   const [activeKeyMap, setActiveKeyMap] = useState({});
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [leftActive, setLeftActive] = useState(false);
-  const [rightActive, setRightActive] = useState(false);
-  const [wheelActive, setWheelActive] = useState(false);
 
   const [screenSize, setScreenSize] = useState({ width: NaN, height: NaN });
   useEffect(() => {
@@ -32,8 +28,6 @@ function App() {
       (_event, ...args: CallbackArgs) => {
         const [type, eventType, x, y] = args;
         if (type === "key") {
-          // console.log("Key:", x, [undefined, true, false][eventType]);
-
           setActiveKeyMap((n) => ({
             ...n,
             [x]: [undefined, true, false][eventType],
@@ -44,13 +38,10 @@ function App() {
             [undefined, true, false][eventType],
           );
         } else if (type === "mouse") {
-          // console.log("Mouse:", eventType, x, y);
-
-          setMousePos({ x, y });
-
-          const xRatio = (x / screenSize.width) * 0.5;
+          // 鼠标移动
+          // setMousePos({ x, y });
+          const xRatio = (x / screenSize.width);
           const yRatio = y / screenSize.height;
-
           for (const id of [
             "ParamMouseX",
             "ParamMouseY",
@@ -58,34 +49,31 @@ function App() {
             "ParamAngleY",
           ]) {
             const { min, max } = live2d.current.getParameterRange(id);
-
             // if (isNil(min) || isNil(max)) continue
-
             const isXAxis = id.endsWith("X");
-
             const ratio = isXAxis ? xRatio : yRatio;
             const value = max - ratio * (max - min);
-
             live2d.current.setParameterValueById(id, value);
           }
 
           if (eventType == 2) {
-            setLeftActive(true);
+            // 按下鼠标左键
+            // setLeftActive(true);
             live2d.current.setParameterValueById("ParamMouseLeftDown", true);
           } else if (eventType == 3) {
-            setLeftActive(false);
+            // 松开鼠标左键
+            // setLeftActive(false);
             live2d.current.setParameterValueById("ParamMouseLeftDown", false);
           } else if (eventType == 4) {
-            setRightActive(true);
+            // 按下鼠标右键
+            // setRightActive(true);
             live2d.current.setParameterValueById("ParamMouseRightDown", true);
           } else if (eventType == 5) {
-            setRightActive(false);
+            // 松开鼠标右键
+            // setRightActive(false);
             live2d.current.setParameterValueById("ParamMouseRightDown", false);
           } else if (eventType == 6) {
-            setWheelActive(true);
-            setTimeout(() => {
-              setWheelActive(false);
-            }, 100);
+            // 鼠标滚轮
           }
         }
       },
@@ -105,24 +93,7 @@ function App() {
     <>
       <img src="/models/standard/resources/background.png" alt="" />
       <canvas ref={canvasRef} id="canvas"></canvas>
-    </>
-  );
-
-  return (
-    <>
       <Keyboard activeKeyMap={activeKeyMap} />
-      <div>
-        screen:{screenSize.width}-{screenSize.height}
-      </div>
-      <div>
-        mouse:{mousePos.x}-{mousePos.y}
-        <div>
-          <span className={leftActive ? "active" : ""}>left</span>
-          &nbsp;
-          <span className={rightActive ? "active" : ""}>right</span>
-        </div>
-        mousewheel:{wheelActive ? "wheeling" : ""}
-      </div>
     </>
   );
 }
