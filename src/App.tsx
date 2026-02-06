@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
+
 import Keyboard from "./components/Keyboard";
 import type { CallbackArgs } from "@lysyyds/win32-mouse-keyboard-hook";
+
+import { initLive2D } from "./index";
 
 function App() {
   const [activeKeyMap, setActiveKeyMap] = useState({});
@@ -55,6 +58,16 @@ function App() {
       },
     );
   }, []);
+
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    if (canvasRef.current) {
+      initLive2D(canvasRef.current);
+    }
+  }, []);
+
+  return <canvas ref={canvasRef} id="canvas" width="200" height="200"></canvas>;
+
   return (
     <>
       <Keyboard activeKeyMap={activeKeyMap} />

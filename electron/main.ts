@@ -62,6 +62,8 @@ function createWindow() {
     hasShadow: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.mjs"),
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
@@ -79,10 +81,11 @@ function createWindow() {
     // win.loadFile('dist/index.html')
     win.loadFile(path.join(RENDERER_DIST, "index.html"));
   }
+  // win.webContents.openDevTools();
 }
 
 function createTray() {
-  const icon = path.join(process.env.VITE_PUBLIC, "icon.png");
+  const icon = path.join(process.env.VITE_PUBLIC, "tray.png");
   const tray = new Tray(icon); // 你的托盘图标
   const contextMenu = Menu.buildFromTemplate([
     { label: "退出", click: () => app.quit() },
