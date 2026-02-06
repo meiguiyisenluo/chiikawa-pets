@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
@@ -7,6 +8,8 @@ import type { CallbackArgs } from "@lysyyds/win32-mouse-keyboard-hook";
 import { initLive2D } from "./index";
 
 function App() {
+  const live2d = useRef<any>(null);
+
   const [activeKeyMap, setActiveKeyMap] = useState({});
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [leftActive, setLeftActive] = useState(false);
@@ -40,14 +43,39 @@ function App() {
 
           setMousePos({ x, y });
 
+          const xRatio = x / screenSize.width * .5;
+          const yRatio = y / screenSize.height;
+
+          for (const id of [
+            "ParamMouseX",
+            "ParamMouseY",
+            "ParamAngleX",
+            "ParamAngleY",
+          ]) {
+            const { min, max } = live2d.current.getParameterRange(id);
+
+            // if (isNil(min) || isNil(max)) continue
+
+            const isXAxis = id.endsWith("X");
+
+            const ratio = isXAxis ? xRatio : yRatio;
+            const value = max - ratio * (max - min);
+
+            live2d.current.setParameterValueById(id, value);
+          }
+
           if (eventType == 2) {
             setLeftActive(true);
+            live2d.current.setParameterValueById("ParamMouseLeftDown", true);
           } else if (eventType == 3) {
             setLeftActive(false);
+            live2d.current.setParameterValueById("ParamMouseLeftDown", false);
           } else if (eventType == 4) {
             setRightActive(true);
+            live2d.current.setParameterValueById("ParamMouseRightDown", true);
           } else if (eventType == 5) {
             setRightActive(false);
+            live2d.current.setParameterValueById("ParamMouseRightDown", false);
           } else if (eventType == 6) {
             setWheelActive(true);
             setTimeout(() => {
@@ -57,12 +85,14 @@ function App() {
         }
       },
     );
-  }, []);
+  }, [screenSize]);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     if (canvasRef.current) {
-      initLive2D(canvasRef.current);
+      initLive2D(canvasRef.current).then((live2dr: any) => {
+        live2d.current = live2dr;
+      });
     }
   }, []);
 
