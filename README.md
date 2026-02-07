@@ -1,5 +1,8 @@
 ## 🐱 Chiikawa Pets
 
+**需要点赞和工作（前端开发）**
+**need star & job(FE Developer)**
+
 A Windows desktop pet inspired by BongoCat, built with Electron + Vite + PixiJS + Live2D.
 Features a self‑developed C++ global keyboard & mouse hook for ultra‑smooth real‑time interaction.
 
