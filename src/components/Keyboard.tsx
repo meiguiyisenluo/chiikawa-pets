@@ -5,6 +5,7 @@ function Keyboard({ activeKeyMap }: { activeKeyMap: Record<number, boolean> }) {
     <>
       {Object.entries(keyImages).map(([key, value]) => (
         <img
+          key={key}
           style={{
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

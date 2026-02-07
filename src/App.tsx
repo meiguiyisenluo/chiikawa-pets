@@ -40,7 +40,7 @@ function App() {
         } else if (type === "mouse") {
           // 鼠标移动
           // setMousePos({ x, y });
-          const xRatio = (x / screenSize.width);
+          const xRatio = x / screenSize.width;
           const yRatio = y / screenSize.height;
           for (const id of [
             "ParamMouseX",
