@@ -91,7 +91,7 @@ function App() {
 
   return (
     <>
-      <img src="/models/standard/resources/background.png" alt="" />
+      <img src="./models/standard/resources/background.png" alt="" />
       <canvas ref={canvasRef} id="canvas"></canvas>
       <Keyboard activeKeyMap={activeKeyMap} />
     </>

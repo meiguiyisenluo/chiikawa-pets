@@ -15,7 +15,7 @@ export async function initLive2D(canvas: HTMLCanvasElement) {
   });
 
   const model = await window.PIXI.live2d.Live2DModel.from(
-    "/models/standard/cat.model3.json",
+    "./models/standard/cat.model3.json",
   );
 
   app.stage.addChild(model);

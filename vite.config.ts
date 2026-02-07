@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./", // 关键：打包后资源路径相对 index.html
   plugins: [
     react(),
     electron({
