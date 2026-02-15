@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@lysyyds/win32-mouse-keyboard-hook": "^1.0.14",
+    "@lysyyds/win32-mouse-keyboard-hook": "1.0.16",
     "pixi-live2d-display": "^0.4.0",
     "pixi.js": "^6.5.10",
     "react": "^18.2.0",

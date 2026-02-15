@@ -10,8 +10,8 @@ ipcMain.handle("get-screen-size", () => {
 
 const require = createRequire(import.meta.url);
 
-const win32KeyboardHook = require("@lysyyds/win32-mouse-keyboard-hook");
-import type { Callback } from "@lysyyds/win32-mouse-keyboard-hook";
+import type Win32KeyboardHook from "@lysyyds/win32-mouse-keyboard-hook";
+const win32KeyboardHook: typeof Win32KeyboardHook = require("@lysyyds/win32-mouse-keyboard-hook");
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -38,16 +38,13 @@ process.env.VITE_PUBLIC = VITE_DEV_SERVER_URL
 let win: BrowserWindow | null;
 
 function createHook() {
-  const callback: Callback = (type, eventType, x, y) => {
-    win?.webContents.send(
-      "global-keyboard-mouse-hook-event",
-      type,
-      eventType,
-      x,
-      y,
-    );
-  };
-  win32KeyboardHook.start(callback);
+  win32KeyboardHook.on("key", (eventType, keyCode) => {
+    win?.webContents.send("global-keyboard-hook-event", eventType, keyCode);
+  });
+  win32KeyboardHook.on("mouse", (eventType, x, y) => {
+    win?.webContents.send("global-mouse-hook-event", eventType, x, y);
+  });
+  win32KeyboardHook.start();
 }
 
 function createWindow() {
@@ -101,6 +98,7 @@ app.on("window-all-closed", () => {
   if (process.platform !== "darwin") {
     app.quit();
     win = null;
+    win32KeyboardHook.stop();
   }
 });
 
