@@ -73,8 +73,11 @@ Perfect for real-time animation sync
 
 ## 🎨 UI Attribution
 
-This project references UI assets from the open-source [BongoCat](https://github.com/ayangweb/BongoCat) project.
-All rights belong to their original creators.
+[BongoCat](https://github.com/ayangweb/BongoCat).  
+
+Chiikawa is from bilibili [中二的崔风机](https://space.bilibili.com/394733784?spm_id_from=333.788.upinfo.detail.click)  
+
+All rights belong to theirs original creators.
 
 ## 💼 Looking for Opportunities
 
