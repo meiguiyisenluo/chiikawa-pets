@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 
-import './index.css'
+import "./index.css";
 
 import Keyboard from "./Keyboard";
 

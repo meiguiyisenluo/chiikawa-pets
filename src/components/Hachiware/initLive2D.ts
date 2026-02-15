@@ -15,7 +15,7 @@ export async function initLive2D(canvas: HTMLCanvasElement) {
   });
 
   const model = await window.PIXI.live2d.Live2DModel.from(
-    "./BongoCatModels/standard/cat.model3.json",
+    "./HachiwareModels/standard/cat_model/cat.model3.json",
   );
 
   app.stage.addChild(model);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef, useState } from "react";
 
-import './index.css'
+import "./index.css";
 
 import Keyboard from "./Keyboard";
 
@@ -12,7 +12,7 @@ import type {
   KeyboardEventCallbackArgs,
 } from "@lysyyds/win32-mouse-keyboard-hook";
 
-function BongoCat() {
+function Hachiware() {
   const live2d = useRef<any>(null);
 
   const [activeKeyMap, setActiveKeyMap] = useState({});
@@ -100,11 +100,11 @@ function BongoCat() {
 
   return (
     <>
-      <img src="./BongoCatModels/standard/resources/background.png" alt="" />
+      <img src="./HachiwareModels/standard/Mousebg.png" alt="" />
       <canvas ref={canvasRef} id="canvas"></canvas>
       <Keyboard activeKeyMap={activeKeyMap} />
     </>
   );
 }
 
-export default BongoCat;
+export default Hachiware;

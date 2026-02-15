@@ -11,7 +11,7 @@ function Keyboard({ activeKeyMap }: { activeKeyMap: Record<number, boolean> }) {
             // @ts-ignore
             display: activeKeyMap[key] ? "block" : "none",
           }}
-          src={"./models/standard/resources/left-keys/" + value}
+          src={"./BongoCatModels/standard/resources/left-keys/" + value}
           alt=""
         />
       ))}
