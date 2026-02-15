@@ -16,7 +16,7 @@ const App = () => {
     };
   }, []);
 
-  let Pet = BongoCat;
+  let Pet = Hachiware;
   if (pet === "hachiware") Pet = Hachiware;
   else Pet = BongoCat;
 
