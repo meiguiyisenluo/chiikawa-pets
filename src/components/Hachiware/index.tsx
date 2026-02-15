@@ -40,7 +40,7 @@ function Hachiware() {
           ...n,
           [keyCode]: [undefined, true, false][eventType],
         };
-        live2d?.current?.setParameterValueById(
+        live2d.current?.setParameterValueById(
           "CatParamLeftHandDown",
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
@@ -66,30 +66,31 @@ function Hachiware() {
         "ParamAngleX",
         "ParamAngleY",
       ]) {
+        if (!live2d.current) return;
         const { min, max } = live2d.current.getParameterRange(id);
         // if (isNil(min) || isNil(max)) continue
         const isXAxis = id.endsWith("X");
         const ratio = isXAxis ? xRatio : yRatio;
         const value = max - ratio * (max - min);
-        live2d.current.setParameterValueById(id, value);
+        live2d.current?.setParameterValueById(id, value);
       }
 
       if (eventType == 2) {
         // 按下鼠标左键
         // setLeftActive(true);
-        live2d.current.setParameterValueById("ParamMouseLeftDown", true);
+        live2d.current?.setParameterValueById("ParamMouseLeftDown", true);
       } else if (eventType == 3) {
         // 松开鼠标左键
         // setLeftActive(false);
-        live2d.current.setParameterValueById("ParamMouseLeftDown", false);
+        live2d.current?.setParameterValueById("ParamMouseLeftDown", false);
       } else if (eventType == 4) {
         // 按下鼠标右键
         // setRightActive(true);
-        live2d.current.setParameterValueById("ParamMouseRightDown", true);
+        live2d.current?.setParameterValueById("ParamMouseRightDown", true);
       } else if (eventType == 5) {
         // 松开鼠标右键
         // setRightActive(false);
-        live2d.current.setParameterValueById("ParamMouseRightDown", false);
+        live2d.current?.setParameterValueById("ParamMouseRightDown", false);
       } else if (eventType == 6) {
         // 鼠标滚轮
       }
@@ -118,7 +119,7 @@ function Hachiware() {
   return (
     <>
       <img src="./HachiwareModels/standard/Mousebg.png" alt="" />
-      <canvas ref={canvasRef} id="canvas"></canvas>
+      <canvas ref={canvasRef}></canvas>
       <Keyboard activeKeyMap={activeKeyMap} />
     </>
   );

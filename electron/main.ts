@@ -86,6 +86,27 @@ function createTray() {
   const tray = new Tray(icon); // 你的托盘图标
   const contextMenu = Menu.buildFromTemplate([
     { label: "退出", click: () => app.quit() },
+    {
+      label: "切换角色",
+      submenu: [
+        {
+          label: "BongoCat",
+          click: () => win?.webContents.send("change-charator", "BongoCat"),
+        },
+        {
+          label: "吉伊",
+          click: () => win?.webContents.send("change-charator", "chii"),
+        },
+        {
+          label: "小八",
+          click: () => win?.webContents.send("change-charator", "hachiware"),
+        },
+        {
+          label: "乌萨奇",
+          click: () => win?.webContents.send("change-charator", "usagi"),
+        },
+      ],
+    },
   ]);
   tray.setToolTip("chiikawa-pet");
   tray.setContextMenu(contextMenu);

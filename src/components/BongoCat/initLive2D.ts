@@ -28,7 +28,7 @@ export async function initLive2D(canvas: HTMLCanvasElement) {
   return {
     setParameterValueById(id: string, value: any) {
       const core = model.internalModel.coreModel;
-      return core.setParameterValueById(id, value);
+      return core?.setParameterValueById(id, value);
     },
     getParameterRange(id: string) {
       const core = model.internalModel.coreModel;
@@ -46,8 +46,6 @@ export async function initLive2D(canvas: HTMLCanvasElement) {
       app.stage.removeChild(model);
       model.destroy(true);
       app.destroy(true);
-      canvas.width = 0;
-      canvas.height = 0;
     },
   };
 }

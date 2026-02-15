@@ -1,10 +1,11 @@
+import { Fragment } from "react/jsx-runtime";
 import keyImages from "./keycode";
 
 function Keyboard({ activeKeyMap }: { activeKeyMap: Record<number, boolean> }) {
   return (
     <>
       {Object.entries(keyImages).map(([key, value]) => (
-        <>
+        <Fragment key={key}>
           <img
             key={key + "keyboard"}
             style={{
@@ -25,7 +26,7 @@ function Keyboard({ activeKeyMap }: { activeKeyMap: Record<number, boolean> }) {
             src={"./HachiwareModels/standard/hand/" + value}
             alt=""
           />
-        </>
+        </Fragment>
       ))}
     </>
   );
