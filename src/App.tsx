@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 type Pets = "chii" | "hachiware" | "usagi" | "BongoCat";
 
 const App = () => {
-  const [pet, setPet] = useState<Pets>("BongoCat");
+  const [pet, setPet] = useState<Pets>("hachiware");
   useEffect(() => {
     const cch = (_event: Electron.IpcRendererEvent, c: Pets) => {
       setPet(c);
@@ -16,7 +16,7 @@ const App = () => {
     };
   }, []);
 
-  let Pet = Hachiware;
+  let Pet = BongoCat;
   if (pet === "hachiware") Pet = Hachiware;
   else Pet = BongoCat;
 
