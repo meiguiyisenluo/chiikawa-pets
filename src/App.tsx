@@ -1,5 +1,6 @@
 import Hachiware from "./components/Hachiware";
 import BongoCat from "./components/BongoCat";
+import Usagi from "./components/Usagi";
 import Chii from "./components/Chii";
 import { useEffect, useState } from "react";
 
@@ -20,6 +21,7 @@ const App = () => {
   let Pet = BongoCat;
   if (pet === "hachiware") Pet = Hachiware;
   else if (pet === "chii") Pet = Chii;
+  else if (pet === "usagi") Pet = Usagi;
   else Pet = BongoCat;
 
   return <Pet />;
