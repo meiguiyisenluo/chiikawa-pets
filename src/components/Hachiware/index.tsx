@@ -109,6 +109,10 @@ function Hachiware() {
         live2d.current = live2dr;
       });
     }
+
+    return () => {
+      live2d.current?.destroy();
+    };
   }, []);
 
   return (

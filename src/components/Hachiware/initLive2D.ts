@@ -42,5 +42,12 @@ export async function initLive2D(canvas: HTMLCanvasElement) {
         max,
       };
     },
+    destroy() {
+      app.stage.removeChild(model);
+      model.destroy(true);
+      app.destroy(true);
+      canvas.width = 0;
+      canvas.height = 0;
+    },
   };
 }
