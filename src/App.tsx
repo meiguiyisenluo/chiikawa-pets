@@ -1,5 +1,5 @@
-import BongoCat from "./components/BongoCat";
+import Hachiware from "./components/Hachiware";
 const App = () => {
-  return <BongoCat />;
+  return <Hachiware />;
 };
 export default App;
