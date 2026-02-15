@@ -5,7 +5,7 @@ import './index.css'
 
 import Keyboard from "./Keyboard";
 
-import { initLive2D } from "@/util/initLive2D";
+import { initLive2D } from "./initLive2D";
 
 import type {
   MouseEventCallbackArgs,

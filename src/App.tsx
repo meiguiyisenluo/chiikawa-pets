@@ -1,5 +1,5 @@
-import Chii from "./components/Chii";
+import Hachiware from "./components/Hachiware";
 const App = () => {
-  return <Chii />;
+  return <Hachiware />;
 };
 export default App;
