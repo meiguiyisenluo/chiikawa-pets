@@ -82,7 +82,7 @@ function createWindow() {
 }
 
 function createTray() {
-  const icon = path.join(process.env.VITE_PUBLIC, "BongoCat.png");
+  const icon = path.join(process.env.VITE_PUBLIC, "Chiikawa.png");
   const tray = new Tray(icon); // 你的托盘图标
   const contextMenu = Menu.buildFromTemplate([
     { label: "退出", click: () => app.quit() },

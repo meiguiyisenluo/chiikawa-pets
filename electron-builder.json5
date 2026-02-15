@@ -19,7 +19,7 @@
     "artifactName": "${productName}-Mac-${version}-Installer.${ext}"
   },
   "win": {
-    icon: "public/BongoCat.ico",
+    icon: "public/Chiikawa.ico",
     "target": [
       {
         "target": "nsis",
